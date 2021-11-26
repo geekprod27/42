@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:05:32 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/11/23 15:05:35 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/11/26 14:12:12 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_strlen(char *tab)
+size_t	ft_strlen(char *tab)
 {
 	int	i;
 
