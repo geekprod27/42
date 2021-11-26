@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:08:16 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/11/26 12:06:20 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/11/26 12:31:06 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ size_t	ft_strlcat(char	*dst, const char *src, size_t dstsize);
 void	*ft_calloc(size_t nmemb, size_t size);
 size_t	ft_strlcpy(char	*dst, const char *src, size_t dstsize);
 char	*ft_strdup(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
