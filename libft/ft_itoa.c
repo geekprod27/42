@@ -55,6 +55,8 @@ char	*ft_itoa(int n)
 	na = n;
 	i = longu(na);
 	dest = malloc(sizeof(char) * (i + 1));
+	if (!dest)
+		return (0);
 	if (check(dest, na)[0] != 'a')
 		return (check(dest, na));
 	dest[i--] = 0;
