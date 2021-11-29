@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 12:00:05 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/11/26 12:08:36 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/11/29 17:10:46 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strdup(const char *s)
 	char	*ptr;
 
 	i = 0;
-	lens = ft_strlen((char *)s);
+	lens = ft_strlen(s);
 	ptr = malloc(sizeof(char) * lens + 1);
 	if (!ptr)
 		return (0);

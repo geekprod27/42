@@ -6,13 +6,13 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:05:32 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/11/26 14:12:12 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/11/29 17:06:05 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(char *tab)
+size_t	ft_strlen(const char *tab)
 {
 	int	i;
 
