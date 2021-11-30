@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 15:06:22 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/11/30 10:41:40 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/11/30 14:58:12 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,28 @@ int	isd(char c, char const *d)
 	return (1);
 }
 
+int	count(char const *s1, char const *set)
+{
+	int	i;
+	int	count;
+
+	count = 0;
+	i = 0;
+	while (!isd(s1[i], set))
+	{
+		i++;
+		count++;
+	}
+	while (s1[i])
+		i++;
+	while (!isd(s1[i], set))
+	{
+		count++;
+		i--;
+	}
+	return (count);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
@@ -34,7 +56,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	j = 0;
-	dest = malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	dest = malloc(sizeof(char) * (ft_strlen(s1) + 1 - count(s1, set)));
 	if (!dest)
 		return (0);
 	while (!isd(s1[i], set))
