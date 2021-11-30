@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 11:18:02 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/11/25 11:52:04 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/11/30 13:03:08 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 
 	i = 0;
 	j = 0;
-	if (s2[j] == 0)
+	if ((unsigned char)s2[j] == 0)
 		return ((char *)s1);
 	while (s1[i] && i < (int)n)
 	{
@@ -30,7 +30,7 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 				i++;
 				j++;
 			}
-			if (s2[j] == '\0')
+			if ((unsigned char)s2[j] == '\0')
 				return ((char *)s1 + i - j);
 		}
 		i++;
