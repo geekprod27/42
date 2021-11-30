@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 15:06:22 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/11/30 14:58:12 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/11/30 16:01:47 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,11 @@ int	count(char const *s1, char const *set)
 		i++;
 		count++;
 	}
+	if (!s1[i])
+		return (count);
 	while (s1[i])
 		i++;
+	i--;
 	while (!isd(s1[i], set))
 	{
 		count++;
