@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 15:06:22 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/11/30 16:01:47 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:52:05 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 		dest[0] = '\0';
 		return (dest);
 	}
-	while (s1[i])
+	while (s1[i] && j < (int)ft_strlen(s1) - (int)count(s1, set))
 		dest[j++] = s1[i++];
 	dest[j] = '\0';
-	j--;
-	while (!isd(dest[j], set))
-		dest[j--] = '\0';
 	return (dest);
 }

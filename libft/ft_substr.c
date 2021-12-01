@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 12:17:34 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/11/30 14:49:21 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:16:36 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	int		i;
 
 	i = 0;
-	if (len > ft_strlen(s) - start)
+	if (start > ft_strlen(s))
+		len = ft_strlen(s);
+	else if (ft_strlen(s) - start < len)
 		len = ft_strlen(s) - start;
 	dest = ft_calloc((len + 1), sizeof(char));
 	if (!dest || !s)
