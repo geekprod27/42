@@ -26,7 +26,7 @@ int	ft_putnbr(int n, int i)
 	if (nb > 9)
 	{
 		i++;
-		ft_putnbr(nb / 10, i);
+		i = ft_putnbr(nb / 10, i);
 		ft_putchar(nb % 10 + 48);
 	}
 	else
@@ -52,7 +52,7 @@ int	ft_putunnbr(unsigned int n, int i)
 	if (nb > 9)
 	{
 		i++;
-		ft_putunnbr(nb / 10, i);
+		i = ft_putunnbr(nb / 10, i);
 		ft_putchar(nb % 10 + 48);
 	}
 	else

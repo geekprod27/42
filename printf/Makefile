@@ -1,4 +1,4 @@
-SRC = ft_printf.c ft_putchar.c ft_putnbr.c ft_putstr.c printpoint.c
+SRC = ft_printf.c ft_putchar.c ft_putnbr.c ft_putstr.c printpoint.c exa.c
 
 OBJ = ${SRC:.c=.o}
 

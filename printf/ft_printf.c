@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:15:01 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/12/02 13:22:16 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:11:05 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,9 @@ int	spe(char c, va_list ap)
 	else if (c == 'u')
 		return (ft_putunnbr(va_arg(ap, unsigned int), 0));
 	else if (c == 'x')
-		return (0);
-		//return (exa(va_arg(ap, unsigned int)));
+		return (exa(va_arg(ap, unsigned int)));
 	else if (c == 'X')
-		return (0);
-		//return (mexa(va_arg(ap, unsigned int)));
+		return (mexa(va_arg(ap, unsigned int)));
 	else if (c == '%')
 		return (ft_putchar('%'));
 	return (0);
@@ -49,29 +47,28 @@ int	ft_printf(const char *s, ...)
 	va_start(ap, s);
 	i = 0;
 	cc = 0;
-	while (s[i])
+	while (s[i] != '\0' )
 	{
-		while (s[i] != '%' && s[i])
+		while (s[i] != '%' && s[i] != '\0')
 		{
 			ft_putchar(s[i]);
 			i++;
 			cc++;
 		}
-		if (s[i] == '%' && s[i])
-			i++;
 		if ((s[i] == 's' || s[i] == 'c' || s[i] == 'p' || s[i] == 'd'
 				|| s[i] == 'i' || s[i] == 'u' || s[i] == 'x'
-				|| s[i] == 'X' || s[i] == '%' ) && s[i])
+				|| s[i] == 'X' || s[i] == '%' ) && s[++i] != '\0')
 			cc = cc + spe(s[i], ap);
-		i = i + 2;
+		if (s[i])
+			i++;
 	}
 	va_end(ap);
 	return (cc);
 }
 
+#include <stdio.h>
 
 int main()
 {
-	char *s;
-	printf("\n%d", ft_printf("%c", 's'));
+	printf ("\n%d",	ft_printf("%d", -69));
 }
