@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 14:51:24 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/12/02 14:54:27 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/12/02 16:52:26 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int	exa(unsigned int nb)
 	char const		*base;
 	char			res[9];
 	int				i;
-	int				j;
 
-	j = 0;
 	base = "0123456789abcdef";
 	i = 8;
+	if (nb == 0)
+		return (ft_putstr("0"));
 	while ((nb / 16) > 0 || i >= 8)
 	{
 		res[i] = base[(nb % 16)];
@@ -29,14 +29,7 @@ int	exa(unsigned int nb)
 		i--;
 	}
 	res[i] = base[(nb % 16)];
-	while (res[i] == '0')
-		i++;
-	while (i < 9 && res[i])
-	{
-		ft_putchar (res[i++]);
-		j++;
-	}
-	return (j);
+	return (print2(res, i));
 }
 
 int	mexa(unsigned int nb)
@@ -49,6 +42,8 @@ int	mexa(unsigned int nb)
 	j = 0;
 	base = "0123456789ABCDEF";
 	i = 8;
+	if (nb == 0)
+		return (ft_putstr("0"));
 	while ((nb / 16) > 0 || i >= 8)
 	{
 		res[i] = base[(nb % 16)];
@@ -56,12 +51,5 @@ int	mexa(unsigned int nb)
 		i--;
 	}
 	res[i] = base[(nb % 16)];
-	while (res[i] == '0')
-		i++;
-	while (i < 9 && res[i])
-	{
-		ft_putchar (res[i++]);
-		j++;
-	}
-	return (j);
+	return (print2(res, i));
 }

@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 16:06:25 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/12/01 06:07:52 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/12/02 16:00:35 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_putstr(char *s)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return (ft_putstr("(null)"));
 	while (s[i])
 	{
 		ft_putchar(s[i]);

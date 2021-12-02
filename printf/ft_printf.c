@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:15:01 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/12/02 15:11:05 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/12/02 16:53:02 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,4 @@ int	ft_printf(const char *s, ...)
 	}
 	va_end(ap);
 	return (cc);
-}
-
-#include <stdio.h>
-
-int main()
-{
-	printf ("\n%d",	ft_printf("%d", -69));
 }
