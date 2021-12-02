@@ -37,3 +37,29 @@ int	ft_putnbr(int n, int i)
 	}
 	return (i);
 }
+
+int	ft_putunnbr(unsigned int n, int i)
+{
+	long	nb;
+
+	nb = n;
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = -nb;
+		i++;
+	}
+	if (nb > 9)
+	{
+		i++;
+		ft_putunnbr(nb / 10, i);
+		ft_putchar(nb % 10 + 48);
+	}
+	else
+	{
+		ft_putchar(nb + 48);
+		i++;
+		return (i);
+	}
+	return (i);
+}
