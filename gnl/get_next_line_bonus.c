@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:34:06 by nfelsemb          #+#    #+#             */
-/*   Updated: 2021/12/08 14:20:21 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2021/12/08 14:34:36 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*cleanbuf(char *buf, char	*ret)
 {
@@ -45,29 +45,29 @@ char	*freeline(char *ret)
 
 char	*get_next_line(int fd)
 {
-	static char		buf[BUFFER_SIZE + 1];
+	static char		buf[1024][BUFFER_SIZE + 1];
 	int				i;
 	char			*ret;
 
-	if (BUFFER_SIZE <= 0 || read(fd, buf, 0) == -1)
+	if (BUFFER_SIZE <= 0 || read(fd, buf[fd], 0) == -1)
 		return (0);
 	ret = ft_strdup("");
-	ret = ft_strjoin(ret, buf);
+	ret = ft_strjoin(ret, buf[fd]);
 	i = 1;
-	while (i > 0 && !isnn(buf))
+	while (i > 0 && !isnn(buf[fd]))
 	{
-		i = read(fd, buf, BUFFER_SIZE);
+		i = read(fd, buf[fd], BUFFER_SIZE);
 		if (i == -1)
 			return (freeline(ret));
 		if (i)
 		{
-			buf[i] = 0;
-			ret = ft_strjoin(ret, buf);
+			buf[fd][i] = 0;
+			ret = ft_strjoin(ret, buf[fd]);
 		}
-		else if (i == 0 && buf[0])
-			return (cleanbuf(buf, ret));
+		else if (i == 0 && buf[fd][0])
+			return (cleanbuf(buf[fd], ret));
 		else
 			return (freeline(ret));
 	}
-	return (cleanbuf(buf, ret));
+	return (cleanbuf(buf[fd], ret));
 }
