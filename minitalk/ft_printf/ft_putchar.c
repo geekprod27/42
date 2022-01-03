@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putchar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 16:28:43 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/03 17:55:53 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/26 16:02:18 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/12/01 12:49:34 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
+#include "ft_printf.h"
 
-int	main(void)
+int	ft_putchar(char c)
 {
-	ft_printf("---------------------------\n-                         -\n");
-	ft_printf("-   Pid serveur : %d   -\n", getpid());
-	ft_printf("-                         -\n---------------------------\n");
-	while (1)
-		pause();
+	write(1, &c, 1);
+	return (1);
 }
