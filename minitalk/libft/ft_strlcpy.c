@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 16:28:41 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/04 16:02:25 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/25 13:56:29 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/29 17:11:02 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
-#include <sys/types.h>
-#include <signal.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	pid;
+	unsigned int	i;
+	unsigned int	lensrc;
 
-	if (argc != 3)
+	lensrc = ft_strlen(src);
+	i = 0;
+	if (dstsize == 0)
+		return (lensrc);
+	while (i + 1 < dstsize && src[i])
 	{
-		ft_printf("Erreur d'argument");
-		exit(2);
+		dst[i] = src[i];
+		i++;
 	}
-	pid = ft_atoi(argv[1]);
-	kill(pid, SIGUSR1);
+	dst[i] = '\0';
+	return (lensrc);
 }

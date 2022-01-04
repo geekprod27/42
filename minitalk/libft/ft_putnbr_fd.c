@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 16:28:41 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/04 16:02:25 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/26 16:06:25 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/30 17:29:41 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
-#include <sys/types.h>
-#include <signal.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	pid;
+	long	nb;
 
-	if (argc != 3)
+	nb = n;
+	if (nb < 0)
 	{
-		ft_printf("Erreur d'argument");
-		exit(2);
+		ft_putchar_fd('-', fd);
+		nb = -nb;
 	}
-	pid = ft_atoi(argv[1]);
-	kill(pid, SIGUSR1);
+	if (nb > 9)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putchar_fd(nb % 10 + 48, fd);
+	}
+	else
+		ft_putchar_fd(nb + 48, fd);
 }

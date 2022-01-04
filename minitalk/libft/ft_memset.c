@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                         :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nfelsemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 16:28:41 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/04 16:02:25 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/23 16:47:52 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/23 16:47:54 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
-#include <sys/types.h>
-#include <signal.h>
-
-int	main(int argc, char **argv)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int	pid;
+	unsigned char	*d;
 
-	if (argc != 3)
+	d = s;
+	while (n > 0)
 	{
-		ft_printf("Erreur d'argument");
-		exit(2);
+		*d = (unsigned char)c;
+		d++;
+		n--;
 	}
-	pid = ft_atoi(argv[1]);
-	kill(pid, SIGUSR1);
+	return (s);
 }

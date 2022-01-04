@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 16:28:41 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/04 16:02:25 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/25 11:18:02 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/30 14:25:42 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
-#include <sys/types.h>
-#include <signal.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	int	pid;
+	size_t	i;
+	size_t	j;
 
-	if (argc != 3)
+	i = 0;
+	j = 0;
+	if (s2[j] == 0)
+		return ((char *)s1);
+	while (s1[i] && i < n)
 	{
-		ft_printf("Erreur d'argument");
-		exit(2);
+		j = 0;
+		while (s2[j] == s1[i + j] && i + j < n)
+		{
+			if (s2[j + 1] == '\0')
+				return ((char *)s1 + i);
+			j++;
+		}
+		i++;
 	}
-	pid = ft_atoi(argv[1]);
-	kill(pid, SIGUSR1);
+	return (0);
 }

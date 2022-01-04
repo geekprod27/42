@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 16:28:41 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/04 16:02:25 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/26 12:00:05 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/29 17:10:46 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
-#include <sys/types.h>
-#include <signal.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strdup(const char *s)
 {
-	int	pid;
+	int		i;
+	int		lens;
+	char	*ptr;
 
-	if (argc != 3)
+	i = 0;
+	lens = ft_strlen(s);
+	ptr = malloc(sizeof(char) * lens + 1);
+	if (!ptr)
+		return (0);
+	while (i < lens)
 	{
-		ft_printf("Erreur d'argument");
-		exit(2);
+		ptr[i] = s[i];
+		i++;
 	}
-	pid = ft_atoi(argv[1]);
-	kill(pid, SIGUSR1);
+	ptr[i] = '\0';
+	return (ptr);
 }

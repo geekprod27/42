@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 16:28:41 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/04 16:02:25 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/24 11:43:50 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/29 18:32:29 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
-#include <sys/types.h>
-#include <signal.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int	pid;
+	char	*de;
 
-	if (argc != 3)
+	de = (char *)dest;
+	while (n > 0)
 	{
-		ft_printf("Erreur d'argument");
-		exit(2);
+		*(char *)dest = *(char *) src;
+		src++;
+		dest++;
+		n--;
 	}
-	pid = ft_atoi(argv[1]);
-	kill(pid, SIGUSR1);
+	return (de);
 }

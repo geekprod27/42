@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 16:28:41 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/04 16:02:25 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/29 16:18:19 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/29 17:11:09 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
-#include <sys/types.h>
-#include <signal.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	pid;
+	char	*dest;
+	int		i;
 
-	if (argc != 3)
+	i = 0;
+	if (!s || !f)
+		return (0);
+	dest = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!dest)
+		return (0);
+	while (s[i])
 	{
-		ft_printf("Erreur d'argument");
-		exit(2);
+		dest[i] = f(i, s[i]);
+		i++;
 	}
-	pid = ft_atoi(argv[1]);
-	kill(pid, SIGUSR1);
+	dest[i] = '\0';
+	return (dest);
 }

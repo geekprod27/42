@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 16:28:41 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/04 16:02:25 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/29 16:39:40 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/29 16:45:38 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
-#include <sys/types.h>
-#include <signal.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	pid;
+	int	i;
 
-	if (argc != 3)
+	i = 0;
+	while (s[i])
 	{
-		ft_printf("Erreur d'argument");
-		exit(2);
+		f(i, &s[i]);
+		i++;
 	}
-	pid = ft_atoi(argv[1]);
-	kill(pid, SIGUSR1);
+	s[i] = '\0';
 }

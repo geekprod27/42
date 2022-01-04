@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 16:28:41 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/04 16:02:25 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/24 14:30:34 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/30 12:59:21 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
-#include <sys/types.h>
-#include <signal.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strrchr(const char *s, int c)
 {
-	int	pid;
+	int	len;
 
-	if (argc != 3)
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	if ((unsigned char)c == '\0')
 	{
-		ft_printf("Erreur d'argument");
-		exit(2);
+		return ((char *)s + len);
 	}
-	pid = ft_atoi(argv[1]);
-	kill(pid, SIGUSR1);
+	while (len >= 0)
+	{
+		if (s[len] == (unsigned char) c)
+		{
+			return ((char *)s + len);
+		}
+		len--;
+	}
+	return (0);
 }

@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 16:28:41 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/04 16:02:25 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/29 14:44:51 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/29 17:10:44 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
-#include <sys/types.h>
-#include <signal.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	pid;
+	int		i;
+	int		len1;
+	int		len2;
+	char	*dest;
 
-	if (argc != 3)
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	dest = malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!dest)
+		return (0);
+	i = 0;
+	while (s1[i])
 	{
-		ft_printf("Erreur d'argument");
-		exit(2);
+		dest[i] = s1[i];
+		i++;
 	}
-	pid = ft_atoi(argv[1]);
-	kill(pid, SIGUSR1);
+	i = 0;
+	while (s2[i])
+	{
+		dest[len1] = s2[i];
+		i++;
+		len1++;
+	}
+	dest[len1] = '\0';
+	return (dest);
 }
