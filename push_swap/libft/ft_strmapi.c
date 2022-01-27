@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/27 21:41:44 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/29 16:18:19 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/29 17:11:09 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int			i;
-	t_extrem	ex;
-	t_tab		*tab;
+	char	*dest;
+	int		i;
 
-	if (argc == 1)
+	i = 0;
+	if (!s || !f)
 		return (0);
-	if (!t_extrem.deb)
+	dest = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!dest)
 		return (0);
-	tab = malloc(sizeof(t_tab));
-	tab->value = ft_atoi(argv[1]);
-	i = 1;
-	while (i <= argc)
+	while (s[i])
 	{
-		tab = malloc(sizeof(t_tab));
-		
+		dest[i] = f(i, s[i]);
+		i++;
 	}
-	return (1);
+	dest[i] = '\0';
+	return (dest);
 }

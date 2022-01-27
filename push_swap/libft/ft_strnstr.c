@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/27 21:41:44 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/25 11:18:02 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/30 14:25:42 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	int			i;
-	t_extrem	ex;
-	t_tab		*tab;
+	size_t	i;
+	size_t	j;
 
-	if (argc == 1)
-		return (0);
-	if (!t_extrem.deb)
-		return (0);
-	tab = malloc(sizeof(t_tab));
-	tab->value = ft_atoi(argv[1]);
-	i = 1;
-	while (i <= argc)
+	i = 0;
+	j = 0;
+	if (s2[j] == 0)
+		return ((char *)s1);
+	while (s1[i] && i < n)
 	{
-		tab = malloc(sizeof(t_tab));
-		
+		j = 0;
+		while (s2[j] == s1[i + j] && i + j < n)
+		{
+			if (s2[j + 1] == '\0')
+				return ((char *)s1 + i);
+			j++;
+		}
+		i++;
 	}
-	return (1);
+	return (0);
 }

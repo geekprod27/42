@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/27 21:41:44 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/25 13:56:29 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/29 17:10:56 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int			i;
-	t_extrem	ex;
-	t_tab		*tab;
+	unsigned int	i;
+	unsigned int	lendst;
+	unsigned int	lensrc;
 
-	if (argc == 1)
-		return (0);
-	if (!t_extrem.deb)
-		return (0);
-	tab = malloc(sizeof(t_tab));
-	tab->value = ft_atoi(argv[1]);
-	i = 1;
-	while (i <= argc)
+	lendst = ft_strlen(dst);
+	lensrc = ft_strlen(src);
+	i = 0;
+	if (lendst > dstsize)
+		return (dstsize + lensrc);
+	while (i + lendst + 1 < dstsize && src[i])
 	{
-		tab = malloc(sizeof(t_tab));
-		
+		dst[i + lendst] = src[i];
+		i++;
 	}
-	return (1);
+	dst[i + lendst] = '\0';
+	return (lendst + lensrc);
 }

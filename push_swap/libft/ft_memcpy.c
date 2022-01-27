@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/27 21:41:44 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/24 11:43:50 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/29 18:32:29 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int			i;
-	t_extrem	ex;
-	t_tab		*tab;
+	char	*de;
 
-	if (argc == 1)
-		return (0);
-	if (!t_extrem.deb)
-		return (0);
-	tab = malloc(sizeof(t_tab));
-	tab->value = ft_atoi(argv[1]);
-	i = 1;
-	while (i <= argc)
+	de = (char *)dest;
+	while (n > 0)
 	{
-		tab = malloc(sizeof(t_tab));
-		
+		*(char *)dest = *(char *) src;
+		src++;
+		dest++;
+		n--;
 	}
-	return (1);
+	return (de);
 }

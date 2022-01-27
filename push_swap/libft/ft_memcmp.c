@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/27 21:41:44 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/24 17:04:22 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/30 12:43:34 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int			i;
-	t_extrem	ex;
-	t_tab		*tab;
+	unsigned char		*sa;
+	unsigned char		*sb;
+	size_t				i;
 
-	if (argc == 1)
-		return (0);
-	if (!t_extrem.deb)
-		return (0);
-	tab = malloc(sizeof(t_tab));
-	tab->value = ft_atoi(argv[1]);
-	i = 1;
-	while (i <= argc)
+	i = 0;
+	sa = (unsigned char *) s1;
+	sb = (unsigned char *) s2;
+	while (i < n)
 	{
-		tab = malloc(sizeof(t_tab));
-		
+		if (sa[i] != sb[i])
+			return (sa[i] - sb[i]);
+		i++;
 	}
-	return (1);
+	if (i == n)
+		return (0);
+	return (sa[i] - sb[i]);
 }

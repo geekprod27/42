@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/27 21:41:44 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/25 20:41:06 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/26 14:55:27 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int			i;
-	t_extrem	ex;
-	t_tab		*tab;
+	void	*ptr;
 
-	if (argc == 1)
+	ptr = malloc(nmemb * size);
+	if (!ptr)
 		return (0);
-	if (!t_extrem.deb)
-		return (0);
-	tab = malloc(sizeof(t_tab));
-	tab->value = ft_atoi(argv[1]);
-	i = 1;
-	while (i <= argc)
-	{
-		tab = malloc(sizeof(t_tab));
-		
-	}
-	return (1);
+	ft_memset(ptr, 0, nmemb * size);
+	return (ptr);
 }

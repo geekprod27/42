@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/27 21:41:44 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/24 14:30:34 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/30 12:59:21 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strrchr(const char *s, int c)
 {
-	int			i;
-	t_extrem	ex;
-	t_tab		*tab;
+	int	len;
 
-	if (argc == 1)
-		return (0);
-	if (!t_extrem.deb)
-		return (0);
-	tab = malloc(sizeof(t_tab));
-	tab->value = ft_atoi(argv[1]);
-	i = 1;
-	while (i <= argc)
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	if ((unsigned char)c == '\0')
 	{
-		tab = malloc(sizeof(t_tab));
-		
+		return ((char *)s + len);
 	}
-	return (1);
+	while (len >= 0)
+	{
+		if (s[len] == (unsigned char) c)
+		{
+			return ((char *)s + len);
+		}
+		len--;
+	}
+	return (0);
 }

@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/27 21:41:44 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/26 12:17:34 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/30 17:16:36 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int			i;
-	t_extrem	ex;
-	t_tab		*tab;
+	char	*dest;
+	int		i;
 
-	if (argc == 1)
+	i = 0;
+	if (start > ft_strlen(s))
+		len = ft_strlen(s);
+	else if (ft_strlen(s) - start < len)
+		len = ft_strlen(s) - start;
+	dest = ft_calloc((len + 1), sizeof(char));
+	if (!dest || !s)
 		return (0);
-	if (!t_extrem.deb)
-		return (0);
-	tab = malloc(sizeof(t_tab));
-	tab->value = ft_atoi(argv[1]);
-	i = 1;
-	while (i <= argc)
-	{
-		tab = malloc(sizeof(t_tab));
-		
-	}
-	return (1);
+	if (start > ft_strlen(s))
+		dest[0] = 0;
+	else
+		ft_strlcpy(dest, (char *)s + start, len + 1);
+	return (dest);
 }

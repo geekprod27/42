@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/27 21:41:44 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/11/29 14:44:51 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/11/29 17:10:44 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int			i;
-	t_extrem	ex;
-	t_tab		*tab;
+	int		i;
+	int		len1;
+	int		len2;
+	char	*dest;
 
-	if (argc == 1)
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	dest = malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!dest)
 		return (0);
-	if (!t_extrem.deb)
-		return (0);
-	tab = malloc(sizeof(t_tab));
-	tab->value = ft_atoi(argv[1]);
-	i = 1;
-	while (i <= argc)
+	i = 0;
+	while (s1[i])
 	{
-		tab = malloc(sizeof(t_tab));
-		
+		dest[i] = s1[i];
+		i++;
 	}
-	return (1);
+	i = 0;
+	while (s2[i])
+	{
+		dest[len1] = s2[i];
+		i++;
+		len1++;
+	}
+	dest[len1] = '\0';
+	return (dest);
 }
