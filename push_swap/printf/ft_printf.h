@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 13:17:27 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/01/28 12:28:10 by nfelsemb         ###   ########.fr       */
+/*   Created: 2021/12/01 11:22:29 by nfelsemb          #+#    #+#             */
+/*   Updated: 2021/12/02 16:52:53 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "libft/libft.h"
+# include <stddef.h>
+# include <stdarg.h>
 
-typedef struct s_tab	t_tab;
-
-struct s_tab
-{
-	t_tab	*prev;
-	int		value;
-	t_tab	*next;
-};
-
-typedef struct s_extrem
-{
-	t_tab	*deb;
-	t_tab	*end;
-}	t_extrem;
+int		ft_putchar(char c);
+int		ft_printf(const char *s, ...);
+int		ft_putnbr(int n, int i);
+int		ft_putunnbr(unsigned int n, int i);
+int		ft_putstr(char *s);
+int		printpoint(void *s);
+int		mexa(unsigned int nb);
+int		exa(unsigned int nb);
+int		print2(char *res, int i);
 
 #endif
