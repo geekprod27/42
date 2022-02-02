@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:08 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/02 14:05:26 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/02 14:24:42 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,3 @@ long int	ft_atol(const char *tab)
 	}
 	return (res * neg);
 }
-
