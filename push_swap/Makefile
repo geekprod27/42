@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wextra -Wall -Werror
 
-SRC = push_swap.c
+SRC = push_swap.c atol.c
 
 OBJ = ${SRC:.c=.o} ${SRS:.c=.o}
 
