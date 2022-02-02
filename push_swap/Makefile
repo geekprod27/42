@@ -30,4 +30,9 @@ fclean: clean
 	@make fclean -C printf/
 	@make fclean -C libft/
 
+com: fclean
+	git add Makefile ${SRC} push_swap.h
+	git commit -m "commit makefile"
+	git push
+
 re: fclean all
