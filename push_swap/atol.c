@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:08 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/02 14:24:42 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:15:06 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,35 @@ long int	ft_atol(const char *tab)
 		i++;
 	}
 	return (res * neg);
+}
+
+void	printall(t_extrem a, t_extrem b)
+{
+	t_tab	*un;
+	t_tab	*deux;
+	int		flag;
+
+	flag = 1;
+	un = a.deb;
+	deux = b.deb;
+	ft_printf("A    |    B\n");
+	while (flag && (un || deux))
+	{
+		if (!(un != a.end || deux != b.end) && (un || deux))
+			flag = 0;
+		if (un && deux)
+			ft_printf("%d    |    %d\n", un->value, deux->value);
+		else if (un && !deux)
+			ft_printf("%d    |     \n", un->value);
+		else if (!un && deux)
+			ft_printf("     |    %d\n", deux->value);
+		if (un != a.end && un)
+			un = un->next;
+		else
+			un = NULL;
+		if (deux != b.end && deux)
+			deux = deux->next;
+		else
+			deux = NULL;
+	}
 }

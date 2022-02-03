@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/02 14:05:10 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:17:21 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,17 @@ void	checkerr(t_extrem ex)
 int	main(int argc, char **argv)
 {
 	int			i;
-	t_extrem	ex;
+	t_extrem	a;
+	t_extrem	b;
 	t_tab		*tab;
 	t_tab		*av;
 
 	if (argc <= 2)
 		return (0);
 	tab = malloc(sizeof(t_tab));
-	ex.deb = tab;
-	ex.end = tab;
+	a.deb = tab;
+	a.end = tab;
+	b.deb = NULL;
 	if (!ft_isfulldigit(argv[1]) || ft_strlen(argv[1]) > 11 || !isint(argv[1]))
 		err();
 	tab->value = ft_atoi(argv[1]);
@@ -85,7 +87,7 @@ int	main(int argc, char **argv)
 		av = tab;
 		tab = malloc(sizeof(t_tab));
 		tab->prev = av;
-		ex.end = tab;
+		a.end = tab;
 		av->next = tab;
 		if (!ft_isfulldigit(argv[i]) || ft_strlen(argv[i]) > 11
 			|| !isint(argv[i]))
@@ -93,6 +95,7 @@ int	main(int argc, char **argv)
 		tab->value = ft_atoi(argv[i]);
 		i++;
 	}
-	checkerr(ex);
+	checkerr(a);
+	printall(a, b);
 	return (1);
 }

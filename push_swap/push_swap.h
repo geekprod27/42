@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:17:27 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/02 14:00:42 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:08:52 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ typedef struct s_extrem
 }	t_extrem;
 
 long int	ft_atol(const char *tab);
+void		swap(t_extrem s);
+void		printall(t_extrem a, t_extrem b);
+void		pushb(t_extrem *a, t_extrem *b);
 
 #endif
