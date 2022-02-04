@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/03 16:17:21 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/04 12:31:29 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,9 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	checkerr(a);
+	pushb(&a, &b);
+	pushb(&a, &b);
+	ss(a, b);
 	printall(a, b);
 	return (1);
 }
