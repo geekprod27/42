@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:17:27 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/08 13:50:46 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/08 18:13:23 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,15 @@ typedef struct s_extrem
 }	t_extrem;
 
 long int	ft_atol(const char *tab);
-void		swap(t_extrem s);
+void		swap(t_extrem *s);
 void		printall(t_extrem a, t_extrem b);
-void		pushb(t_extrem *a, t_extrem *b);
-void		ss(t_extrem a, t_extrem b);
+void		push(t_extrem *a, t_extrem *b);
+void		ss(t_extrem *a, t_extrem *b);
 void		rotate(t_extrem *ex);
 void		revrot(t_extrem *ex);
 void		rrr(t_extrem *a, t_extrem *b);
 void		rr(t_extrem *a, t_extrem *b);
 void		sortmoin(t_extrem *a);
+void		sortplus(t_extrem *a, t_extrem *b, int len);
 
 #endif

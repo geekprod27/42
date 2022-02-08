@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wextra -Wall -Werror
+CFLAGS = -Wextra -Wall -Werror -g
 
 SRC = push_swap.c atol.c mouv.c mouv2.c sort.c
 
