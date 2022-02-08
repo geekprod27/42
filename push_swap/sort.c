@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:36 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/08 18:14:14 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/08 18:19:49 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,6 @@ void	sortmoin(t_extrem *a)
 		{
 			revrot(a);
 			ft_printf("rra\n");
-		}
-		un = un->next;
-		if (un->index > deux->index)
-		{
-			revrot(a);
-			swap(a);
-			ft_printf("rra\nsa\n");
 		}
 	}
 }
