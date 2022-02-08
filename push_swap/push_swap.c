@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/04 12:31:29 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/07 19:35:36 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,29 @@ void	checkerr(t_extrem ex)
 	}
 }
 
+void	indexeur(t_extrem *ex)
+{
+	int		i;
+	t_tab	*un;
+	t_tab	*deux;
+
+	un = ex->deb;
+	deux = un->next;
+	while (un)
+	{
+		i = 0;
+		while (deux)
+		{
+			if (deux->value < un->value)
+				i++;
+			deux = deux->next;
+		}
+		un->index = i;
+		un = un->next;
+		deux = ex->deb;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	int			i;
@@ -96,9 +119,7 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	checkerr(a);
-	pushb(&a, &b);
-	pushb(&a, &b);
-	ss(a, b);
+	indexeur(&a);
 	printall(a, b);
 	return (1);
 }

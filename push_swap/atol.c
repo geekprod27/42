@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:08 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/03 16:15:06 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/07 19:40:41 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,16 @@ void	printall(t_extrem a, t_extrem b)
 {
 	t_tab	*un;
 	t_tab	*deux;
-	int		flag;
 
-	flag = 1;
 	un = a.deb;
 	deux = b.deb;
 	ft_printf("A    |    B\n");
-	while (flag && (un || deux))
+	while ((un || deux))
 	{
-		if (!(un != a.end || deux != b.end) && (un || deux))
-			flag = 0;
 		if (un && deux)
 			ft_printf("%d    |    %d\n", un->value, deux->value);
 		else if (un && !deux)
-			ft_printf("%d    |     \n", un->value);
+			ft_printf("%d(%d)    |     \n", un->value, un->index);
 		else if (!un && deux)
 			ft_printf("     |    %d\n", deux->value);
 		if (un != a.end && un)

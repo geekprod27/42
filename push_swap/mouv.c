@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:13:35 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/03 16:08:17 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:28:05 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,30 @@ void	pushb(t_extrem *a, t_extrem *b)
 		un->next = b->deb;
 		b->deb = un;
 	}
+}
+
+void	rotate(t_extrem *ex)
+{
+	t_tab	*un;
+	t_tab	*deux;
+
+	un = ex->deb;
+	ex->deb = un->next;
+	un->prev = ex->end;
+	deux = ex->end;
+	deux->next = un;
+	ex->end = un;
+}
+
+void	revrot(t_extrem *ex)
+{
+	t_tab	*un;
+	t_tab	*deux;
+
+	un = ex->end;
+	ex->end = un->prev;
+	deux = ex->end;
+	deux->next = NULL;
+	un->next = ex->deb;
+	ex->deb = un;
 }
