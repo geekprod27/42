@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:13:35 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/07 18:28:05 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:55:30 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,18 @@ void	swap(t_extrem s)
 	t_tab	*un;
 	t_tab	*deux;
 	int		val;
+	int		indextemp;
 
 	un = s.deb;
 	deux = un->next;
 	val = un->value;
+	indextemp = un->index;
 	un->prev = deux;
 	deux->prev = NULL;
 	un->value = deux->value;
+	un->index = deux->index;
 	deux->value = val;
+	deux->index = indextemp;
 }
 
 void	ss(t_extrem a, t_extrem b)

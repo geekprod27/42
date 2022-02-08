@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/07 19:35:36 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:39:10 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ int	main(int argc, char **argv)
 	}
 	checkerr(a);
 	indexeur(&a);
+	if (argc - 1 <= 3)
+		sortmoin(&a);
 	printall(a, b);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:17:27 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/07 19:01:05 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:50:46 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void		rotate(t_extrem *ex);
 void		revrot(t_extrem *ex);
 void		rrr(t_extrem *a, t_extrem *b);
 void		rr(t_extrem *a, t_extrem *b);
+void		sortmoin(t_extrem *a);
 
 #endif
