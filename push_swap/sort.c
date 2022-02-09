@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:36 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/09 12:24:00 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/09 14:01:06 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 	i = 0;
 	if (len > 6)
 	{
-		while (i <= len / 2)
+		while (i < len / 2)
 		{
-			if (un->index <= len / 2)
+			if (un->index < len / 2)
 			{
 				ft_printf("pb\n");
 				push(a, b);
@@ -76,5 +76,17 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 				un = a->deb;
 			}
 		}
+	}
+	while (lslen(*a) > 3)
+	{
+		ft_printf("pb\n");
+		push(a, b);
+		un = a->deb;
+	}
+	sortmoin(a);
+	while (b->deb->index < a->deb->index)
+	{
+		push(b, a);
+		ft_printf("pa\n");
 	}
 }
