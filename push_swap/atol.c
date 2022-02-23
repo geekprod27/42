@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:08 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/07 19:40:41 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/10 13:44:15 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,11 @@ int	skipspaces(char *sr)
 	return (j);
 }
 
-// les opticiens
-long int	ft_atol(const char *tab)
+long int	les_opticiens(const char *tab, int i, int neg)
 {
 	long int	res;
-	int			i;
-	long int	neg;
 
 	res = 0;
-	i = 0;
-	neg = 1;
-	i = skipspaces((char *)tab);
-	if (tab[i] == '-' || tab[i] == '+')
-	{
-		if (tab[i] == '-')
-			neg = -1;
-		i++;
-	}
 	while (tab[i])
 	{
 		if (ft_isdigit(tab[i]))
@@ -52,6 +40,25 @@ long int	ft_atol(const char *tab)
 	return (res * neg);
 }
 
+long int	ft_atol(const char *tab)
+{
+	int			i;
+	long int	neg;
+
+	i = 0;
+	neg = 1;
+	i = skipspaces((char *)tab);
+	if (tab[i] == '-' || tab[i] == '+')
+	{
+		if (tab[i] == '-')
+			neg = -1;
+		i++;
+		if (!tab[i])
+			err();
+	}
+	return (les_opticiens(tab, i, neg));
+}
+
 void	printall(t_extrem a, t_extrem b)
 {
 	t_tab	*un;
@@ -63,7 +70,8 @@ void	printall(t_extrem a, t_extrem b)
 	while ((un || deux))
 	{
 		if (un && deux)
-			ft_printf("%d    |    %d\n", un->value, deux->value);
+			ft_printf("%d(%d)    |    %d(%d)\n", un->value, un->index,
+				deux->value, deux->index);
 		else if (un && !deux)
 			ft_printf("%d(%d)    |     \n", un->value, un->index);
 		else if (!un && deux)

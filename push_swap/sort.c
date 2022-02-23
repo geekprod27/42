@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:36 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/09 14:01:06 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/23 17:16:21 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ void	sortmoin(t_extrem *a)
 			revrot(a);
 			ft_printf("rra\n");
 		}
+		deux = ((un = a->deb->next), un->next);
+		if (un->index > deux->index)
+		{
+			revrot(a);
+			swap(a);
+			ft_printf("rra\nsa\n");
+		}
 	}
 }
 
@@ -49,6 +56,23 @@ int	lslen(t_extrem ex)
 		un = un->next;
 	}
 	return (i);
+}
+
+int	checktrie(t_extrem *a)
+{
+	t_tab	*un;
+	t_tab	*deux;
+
+	un = a->deb;
+	deux = un->next;
+	while (un && deux)
+	{
+		if (un->index > deux->index)
+			return (0);
+		un = un->next;
+		deux = deux->next;
+	}
+	return (1);
 }
 
 void	sortplus(t_extrem *a, t_extrem *b, int len)
@@ -84,9 +108,40 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 		un = a->deb;
 	}
 	sortmoin(a);
-	while (b->deb->index < a->deb->index)
+	while (b->deb)
 	{
-		push(b, a);
-		ft_printf("pa\n");
+		if (!(b->deb->index < a->deb->index))
+		{
+			rotate(a);
+			ft_printf("ra\n");
+		}
+		while (b->deb->index < a->deb->index)
+		{
+			push(b, a);
+			ft_printf("pa\n");
+			if (a->end->index < a->deb->index)
+			{
+				revrot(a);
+				ft_printf("rra\n");
+			}
+			if (!b->deb)
+				break ;
+		}
+		if (b->deb)
+		{
+			if (b->deb->index > a->end->index && checktrie(a))
+			{
+				push(b, a);
+				rotate(a);
+				ft_printf("pa\nra\n");
+				if (!b->deb)
+					break ;
+			}
+		}
+	}
+	while (a->deb->index != 0)
+	{
+		rotate(a);
+		ft_printf("ra\n");
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/09 12:21:25 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/23 17:16:31 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,14 +95,16 @@ int	main(int argc, char **argv)
 	t_tab		*tab;
 	t_tab		*av;
 
-	if (argc <= 2)
-		return (0);
 	tab = malloc(sizeof(t_tab));
 	a.deb = tab;
 	a.end = tab;
 	b.deb = NULL;
+	if (argc == 1)
+		return (0);
 	if (!ft_isfulldigit(argv[1]) || ft_strlen(argv[1]) > 11 || !isint(argv[1]))
 		err();
+	if (argc <= 2)
+		return (0);
 	tab->value = ft_atoi(argv[1]);
 	i = 2;
 	while (i <= argc - 1)
@@ -120,10 +122,11 @@ int	main(int argc, char **argv)
 	}
 	checkerr(a);
 	indexeur(&a);
+	if (checktrie(&a))
+		return (0);
 	if (argc - 1 <= 3)
 		sortmoin(&a);
 	else
 		sortplus(&a, &b, i - 1);
-	printall(a, b);
 	return (1);
 }

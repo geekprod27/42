@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:17:27 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/08 18:13:23 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/23 17:09:59 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ void		rrr(t_extrem *a, t_extrem *b);
 void		rr(t_extrem *a, t_extrem *b);
 void		sortmoin(t_extrem *a);
 void		sortplus(t_extrem *a, t_extrem *b, int len);
+void		err(void);
+int			checktrie(t_extrem *a);
 
 #endif

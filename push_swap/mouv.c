@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:13:35 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/09 12:21:07 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/10 14:54:22 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	push(t_extrem *a, t_extrem *b)
 		b->deb = deux;
 		b->end = deux;
 		deux->value = un->value;
+		deux->index = un->index;
 		a->deb = un->next;
 		free(un);
 	}
