@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/23 17:16:31 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/24 13:52:15 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ int	main(int argc, char **argv)
 		sortmoin(&a);
 	else
 		sortplus(&a, &b, i - 1);
+	printall(a, b);
 	return (1);
 }
