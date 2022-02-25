@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:17:27 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/24 15:38:10 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/25 14:38:33 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ typedef struct s_extrem
 	t_tab	*end;
 }	t_extrem;
 
+typedef struct s_mouv
+{
+	int	ra;
+	int	rb;
+}	t_mouv;
+
 long int	ft_atol(const char *tab);
 void		swap(t_extrem *s);
 void		printall(t_extrem a, t_extrem b);
@@ -49,5 +55,7 @@ void		err(void);
 int			checktrie(t_extrem *a);
 int			getmin(t_extrem a);
 int			getmax(t_extrem a);
+t_mouv		getmouv(t_extrem *a, t_extrem *b);
+void		setmouv(t_extrem *a, t_extrem *b, t_mouv best);
 
 #endif

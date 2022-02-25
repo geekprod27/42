@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wextra -Wall -Werror -g
 
-SRC = push_swap.c atol.c mouv.c mouv2.c sort.c util.c
+SRC = push_swap.c atol.c mouv.c mouv2.c sort.c util.c sort2.c
 
 OBJ = ${SRC:.c=.o} ${SRS:.c=.o}
 

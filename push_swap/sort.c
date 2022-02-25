@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:36 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/24 17:16:09 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/25 14:53:15 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	checktrie(t_extrem *a)
 void	sortplus(t_extrem *a, t_extrem *b, int len)
 {
 	t_tab	*un;
+	t_mouv	best;
 	int		i;
 
 	un = a->deb;
@@ -105,32 +106,31 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 		un = a->deb;
 	}
 	sortmoin(a);
-	printall(*a, *b);
 	while (b->deb)
 	{
-		if (b->deb->index < a->deb->index && b->deb->index > a->end->index)
-		{
-			push(b, a);
-			ft_printf("pa\n");
-			printall(*a, *b);
-		}
-		else if (checktrie(a) && a->end->index < b->deb->index)
+		if (checktrie(a) && a->end->index < b->deb->index)
 		{
 			push(b, a);
 			rotate(a);
 			ft_printf("pa\nra\n");
-			printall(*a, *b);
 		}
 		else if (b->deb->index == a->deb->index - 1)
 		{
 			push(b, a);
 			ft_printf("pa\n");
-			printall(*a, *b);
+		}
+		else if (checktrie(a) && a->deb->index > b->deb->index)
+		{
+			push(b, a);
+			ft_printf("pa\n");
 		}
 		else
 		{
-			
-			break ;
+			best = getmouv(a, b);
+			if (best.ra == 1000000)
+				break ;
+			setmouv(a, b, best);
+			printall(*a, *b);
 		}
 	}
 }
