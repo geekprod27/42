@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:36 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/25 14:53:15 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/26 17:23:24 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 
 	un = a->deb;
 	i = 0;
-	while (i < (len / 2))
+	while (i < (len / 2) && len >= 6)
 	{
 		if (un->index < (len / 2))
 		{
