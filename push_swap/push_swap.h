@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:17:27 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/25 14:38:33 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/28 06:59:44 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ int			getmin(t_extrem a);
 int			getmax(t_extrem a);
 t_mouv		getmouv(t_extrem *a, t_extrem *b);
 void		setmouv(t_extrem *a, t_extrem *b, t_mouv best);
+void		zerodeb(t_extrem *a);
+int			lslen(t_extrem ex);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouv.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:13:35 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/10 14:54:22 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/28 12:20:03 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	push(t_extrem *a, t_extrem *b)
 		deux = b->deb;
 		a->deb = un->next;
 		un->next = b->deb;
+		b->deb->prev = un;
 		b->deb = un;
 	}
 }

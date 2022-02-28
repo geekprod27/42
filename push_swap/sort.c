@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:36 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/26 17:23:24 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/02/28 12:25:44 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,10 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 			if (best.ra == 1000000)
 				break ;
 			setmouv(a, b, best);
-			printall(*a, *b);
 		}
 	}
+	if (best.ra != 1000000)
+		zerodeb(a);
+	else
+		ft_printf("ERReur push !\n");
 }
