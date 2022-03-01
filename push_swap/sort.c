@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:36 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/28 12:25:44 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/01 08:21:24 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 			rotate(a);
 			ft_printf("pa\nra\n");
 		}
-		else if (b->deb->index == a->deb->index - 1)
+		else if (b->deb->index == a->deb->index - 1 && checktrie(a))
 		{
 			push(b, a);
 			ft_printf("pa\n");
@@ -130,10 +130,12 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 			if (best.ra == 1000000)
 				break ;
 			setmouv(a, b, best);
+			printall(*a, *b);
 		}
+		a->deb->prev = NULL;
 	}
 	if (best.ra != 1000000)
 		zerodeb(a);
 	else
-		ft_printf("ERReur push !\n");
+		ft_printf("err push !\n");
 }

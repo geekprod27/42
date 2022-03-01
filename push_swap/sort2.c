@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:17:00 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/28 12:30:12 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/01 08:48:44 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,33 @@ t_mouv	getmouv(t_extrem *a, t_extrem *b)
 		{
 			if (un->prev)
 			{
-				if ((checktrie(a) && deux->index < un->index)
-					|| ((!checktrie(a)) && deux->index < un->index
-						&& deux->index > un->prev->index))
+				if (checktrie(a) && deux->index < un->index)
+				{
+					//ra++;
+					if (ra + rb < best.ra + best.rb)
+					{
+						ft_printf("\n2index : %d\n1index : %d\n1previndex : %d, cond1, checktrie :%d\n\n", deux->index, un->index, un->prev->index, checktrie(a));
+						best.ra = ra;
+						best.rb = rb;
+					}
+				}
+				if (!checktrie(a) && deux->index < un->index
+					&& deux->index > un->prev->index)
 				{
 					if (ra + rb < best.ra + best.rb)
 					{
+						ft_printf("\n2index : %d\n1index : %d\n1previndex : %d, cond1bis, checktrie :%d\n\n", deux->index, un->index, un->prev->index, checktrie(a));
+						best.ra = ra;
+						best.rb = rb;
+					}
+				}
+				if (un->index - 1 == deux->index && !checktrie(a))
+				{
+					// if (!checktrie(a))
+					// 	ra--;
+					if (ra + rb < best.ra + best.rb)
+					{
+						ft_printf("index : %d, cond2\n", deux->index);
 						best.ra = ra;
 						best.rb = rb;
 					}
@@ -49,14 +70,26 @@ t_mouv	getmouv(t_extrem *a, t_extrem *b)
 			{
 				if (ra + rb < best.ra + best.rb)
 				{
+					ft_printf("index : %d, cond3\n", deux->index);
 					best.ra = ra;
 					best.rb = rb;
 				}
 			}
-			else if (deux->index == un->index - 1)
+			if (deux->index == un->index - 1 && checktrie(a))
 			{
 				if (ra + rb < best.ra + best.rb)
 				{
+					ft_printf("index : %d, cond4\n", deux->index);
+					best.ra = ra;
+					best.rb = rb;
+				}
+			}
+			if (un->index == getmax(*a) && un->index + 1 == deux->index)
+			{
+				ra++;
+				if (ra + rb < best.ra + best.rb)
+				{
+					ft_printf("index : %d, cond5\n", deux->index);
 					best.ra = ra;
 					best.rb = rb;
 				}
