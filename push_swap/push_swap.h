@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:17:27 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/02 12:01:24 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/02 17:48:06 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void		setmouv(t_extrem *a, t_extrem *b, t_mouv best);
 void		zerodeb(t_extrem *a);
 int			lslen(t_extrem ex);
 t_mouv		optibest(t_mouv best, t_extrem a, t_extrem b);
+t_mouv		savebest(int ra, int rb);
 
 #endif
