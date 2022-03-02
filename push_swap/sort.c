@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:36 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/01 08:21:24 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/02 12:16:45 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 	sortmoin(a);
 	while (b->deb)
 	{
+		a->deb->prev = NULL;
 		if (checktrie(a) && a->end->index < b->deb->index)
 		{
 			push(b, a);
@@ -127,15 +128,14 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 		else
 		{
 			best = getmouv(a, b);
-			if (best.ra == 1000000)
+			if (best.ra > 90000)
 				break ;
+			//ft_printf("\navant\nra : %d\nrb : %d\nlenb : %d\n\n", best.ra, best.rb, lslen(*b));
+			best = optibest(best, *a, *b);
+			//ft_printf("\napres\nra : %d\nrb : %d\n\n", best.ra, best.rb);
 			setmouv(a, b, best);
-			printall(*a, *b);
+			//printall(*a, *b);
 		}
-		a->deb->prev = NULL;
 	}
-	if (best.ra != 1000000)
-		zerodeb(a);
-	else
-		ft_printf("err push !\n");
+	zerodeb(a);
 }

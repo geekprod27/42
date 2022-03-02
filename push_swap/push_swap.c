@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/01 07:50:17 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/02 12:16:38 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int	main(int argc, char **argv)
 		sortmoin(&a);
 	else
 		sortplus(&a, &b, i - 1);
-	printall(a, b);
+	//printall(a, b);
+	//ft_printf("check trie :%d\n", checktrie(&a));
 	return (1);
 }
