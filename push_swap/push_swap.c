@@ -6,15 +6,16 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/02 12:16:38 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/03 07:44:14 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	err(void)
+void	err(t_extrem tab)
 {
 	ft_printf("Error\n");
+	freeall(tab);
 	exit(1);
 }
 
@@ -55,7 +56,7 @@ void	checkerr(t_extrem ex)
 			if (tab2 == ex.end)
 				flag = 0;
 			if (tab->value == tab2->value)
-				err();
+				err(ex);
 			tab2 = tab2->next;
 		}
 		flag = 1;
@@ -64,71 +65,24 @@ void	checkerr(t_extrem ex)
 	}
 }
 
-void	indexeur(t_extrem *ex)
-{
-	int		i;
-	t_tab	*un;
-	t_tab	*deux;
-
-	un = ex->deb;
-	deux = un->next;
-	while (un)
-	{
-		i = 0;
-		while (deux)
-		{
-			if (deux->value < un->value)
-				i++;
-			deux = deux->next;
-		}
-		un->index = i;
-		un = un->next;
-		deux = ex->deb;
-	}
-}
-
 int	main(int argc, char **argv)
 {
-	int			i;
 	t_extrem	a;
-	t_extrem	b;
 	t_tab		*tab;
-	t_tab		*av;
 
 	tab = malloc(sizeof(t_tab));
 	a.deb = tab;
 	a.end = tab;
-	b.deb = NULL;
 	if (argc == 1)
+	{
+		free(tab);
 		return (0);
+	}
 	if (!ft_isfulldigit(argv[1]) || ft_strlen(argv[1]) > 11 || !isint(argv[1]))
-		err();
+		err(a);
 	if (argc <= 2)
 		return (0);
 	tab->value = ft_atoi(argv[1]);
-	i = 2;
-	while (i <= argc - 1)
-	{
-		av = tab;
-		tab = malloc(sizeof(t_tab));
-		tab->prev = av;
-		a.end = tab;
-		av->next = tab;
-		if (!ft_isfulldigit(argv[i]) || ft_strlen(argv[i]) > 11
-			|| !isint(argv[i]))
-			err();
-		tab->value = ft_atoi(argv[i]);
-		i++;
-	}
-	checkerr(a);
-	indexeur(&a);
-	if (checktrie(&a))
-		return (0);
-	if (argc - 1 <= 3)
-		sortmoin(&a);
-	else
-		sortplus(&a, &b, i - 1);
-	//printall(a, b);
-	//ft_printf("check trie :%d\n", checktrie(&a));
+	mainsuite(argc, tab, a, argv);
 	return (1);
 }

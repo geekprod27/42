@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   atol.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:08 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/10 13:44:15 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/03 08:34:16 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ long int	ft_atol(const char *tab)
 {
 	int			i;
 	long int	neg;
+	t_extrem	a;
 
 	i = 0;
 	neg = 1;
@@ -54,7 +55,7 @@ long int	ft_atol(const char *tab)
 			neg = -1;
 		i++;
 		if (!tab[i])
-			err();
+			err(a);
 	}
 	return (les_opticiens(tab, i, neg));
 }

@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:17:27 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/02 17:48:06 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/03 12:23:52 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		rrr(t_extrem *a, t_extrem *b);
 void		rr(t_extrem *a, t_extrem *b);
 void		sortmoin(t_extrem *a);
 void		sortplus(t_extrem *a, t_extrem *b, int len);
-void		err(void);
+void		err(t_extrem tab);
 int			checktrie(t_extrem *a);
 int			getmin(t_extrem a);
 int			getmax(t_extrem a);
@@ -61,5 +61,15 @@ void		zerodeb(t_extrem *a);
 int			lslen(t_extrem ex);
 t_mouv		optibest(t_mouv best, t_extrem a, t_extrem b);
 t_mouv		savebest(int ra, int rb);
+void		freeall(t_extrem tab);
+void		mainsuite(int argc, t_tab *tab, t_extrem a, char **arg);
+int			ft_isfulldigit(char *str);
+int			isint(char *str);
+void		checkerr(t_extrem ex);
+void		indexeur(t_extrem *ex);
+void		mainsuite2(t_extrem a, int argc, int i);
+void		sortplus2(t_extrem *a, t_extrem *b, int len);
+void		sortplusplus(t_extrem *a, t_extrem *b);
+t_mouv		unprev(t_mouv best, t_tab un, t_tab deux, t_extrem *a);
 
 #endif
