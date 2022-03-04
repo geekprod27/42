@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:28:27 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/03 12:45:17 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/04 09:08:22 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void	mainsuite(int argc, t_tab *tab, t_extrem a, char **argv)
 		tab->value = ft_atoi(argv[i]);
 		i++;
 	}
-	mainsuite2(a, argc, i);
+	mainsuite2(a, argc);
 }
 
-void	mainsuite2(t_extrem a, int argc, int i)
+void	mainsuite2(t_extrem a, int argc)
 {
 	t_extrem	b;
 
@@ -85,6 +85,6 @@ void	mainsuite2(t_extrem a, int argc, int i)
 	if (argc - 1 <= 3)
 		sortmoin(&a);
 	else
-		sortplus(&a, &b, i - 1);
+		sortplus(&a, &b, lslen(a));
 	freeall(a);
 }

@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 08:26:03 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/04 08:37:23 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/04 11:54:03 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ t_mouv	getmou(t_extrem *a, t_mouv	temp, t_mouv best, t_point j)
 		if (j.un->prev)
 			best = unprev(a, temp, best, j);
 		else if ((checktrie(a) && j.deux->index < j.un->index)
-			|| ((j.deux->index < j.un->index
-					&& j.deux->index > a->end->index)))
+			|| ((j.deux->index < j.un->index && j.deux->index > a->end->index)))
 			best = savebest(temp.ra, temp.rb, best);
 		if (j.deux->index == j.un->index - 1 && checktrie(a))
 			best = savebest(temp.ra, temp.rb, best);
@@ -51,7 +50,7 @@ t_mouv	getmou(t_extrem *a, t_mouv	temp, t_mouv best, t_point j)
 			&& j.un->index + 1 == j.deux->index)
 				best = savebest(temp.ra + 1, temp.rb, best);
 			j.deux = j.deux->next;
-			temp.rb++;
+		temp.rb++;
 	}
 	return (best);
 }
@@ -63,14 +62,14 @@ int	getrr(int len, t_tab *un)
 
 	i = 0;
 	j = 0;
-	while (i < (len / 2) && len >= 6)
+	while (j < (len / 2) && len >= 6)
 	{
 		if (un->index < (len / 2))
 			j++;
 		i++;
 		un = un->next;
 	}
-	return (j);
+	return (i);
 }
 
 int	getrrr(int len, t_tab *un, t_extrem *a)
@@ -80,7 +79,7 @@ int	getrrr(int len, t_tab *un, t_extrem *a)
 
 	i = 0;
 	j = 0;
-	while (i < (len / 2) && len >= 6)
+	while (j < (len / 2) && len >= 6)
 	{
 		if (un->index < (len / 2))
 			j++;
@@ -90,5 +89,5 @@ int	getrrr(int len, t_tab *un, t_extrem *a)
 		else
 			un = a->end;
 	}
-	return (j);
+	return (i);
 }

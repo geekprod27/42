@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:17:27 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/04 08:50:53 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/04 09:08:41 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int			ft_isfulldigit(char *str);
 int			isint(char *str);
 void		checkerr(t_extrem ex);
 void		indexeur(t_extrem *ex);
-void		mainsuite2(t_extrem a, int argc, int i);
+void		mainsuite2(t_extrem a, int argc);
 void		sortplus2(t_extrem *a, t_extrem *b, int len);
 void		sortplusplus(t_extrem *a, t_extrem *b);
 t_mouv		unprev(t_extrem *a, t_mouv	temp, t_mouv best, t_point j);

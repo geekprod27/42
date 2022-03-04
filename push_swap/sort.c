@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:36 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/04 08:51:37 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/04 09:21:39 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	sortplus2(t_extrem *a, t_extrem *b, int len)
 	t_tab	*un;
 
 	un = a->deb;
-	if (getrr(len, un) > getrrr(len, un, a))
+	if (getrr(len, un) >= getrrr(len, un, a))
 		pushmoiti(len, a, b, un);
 	else
 		pushmoit(len, a, b, un);
