@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:08 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/03 08:34:16 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/04 08:50:24 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,28 @@ void	printall(t_extrem a, t_extrem b)
 			deux = deux->next;
 		else
 			deux = NULL;
+	}
+}
+
+void	pushmoiti(int len, t_extrem *a, t_extrem *b, t_tab *un)
+{
+	int	i;
+
+	i = 0;
+	while (i < (len / 2) && len >= 6)
+	{
+		if (un->index < (len / 2))
+		{
+			ft_printf("pb\n");
+			push(a, b);
+			un = a->deb;
+			i++;
+		}
+		else
+		{
+			ft_printf("ra\n");
+			rotate(a);
+			un = a->deb;
+		}
 	}
 }

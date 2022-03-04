@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:16:42 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/03 07:15:56 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/04 07:32:56 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,13 @@ t_mouv	optibest(t_mouv best, t_extrem a, t_extrem b)
 	return (best);
 }
 
-t_mouv	savebest(int ra, int rb)
+t_mouv	savebest(int ra, int rb, t_mouv best)
 {
-	t_mouv	best;
-
-	best.ra = ra;
-	best.rb = rb;
+	if (ra + rb < best.ra + best.rb)
+	{
+		best.ra = ra;
+		best.rb = rb;
+	}
 	return (best);
 }
 

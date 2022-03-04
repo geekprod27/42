@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:36 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/03 12:51:17 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/04 08:51:37 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 		if (checktrie(a) && a->end->index < b->deb->index)
 		{
 			push(b, a);
-			rotate(a);
-			ft_printf("pa\nra\n");
+			ft_printf("pa\n");
 		}
 		else if (b->deb->index == a->deb->index - 1 && checktrie(a))
 		{
@@ -105,26 +104,12 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 
 void	sortplus2(t_extrem *a, t_extrem *b, int len)
 {
-	int		i;
 	t_tab	*un;
 
 	un = a->deb;
-	i = 0;
-	while (i < (len / 2) && len >= 6)
-	{
-		if (un->index < (len / 2))
-		{
-			ft_printf("pb\n");
-			push(a, b);
-			un = a->deb;
-			i++;
-		}
-		else
-		{
-			ft_printf("ra\n");
-			rotate(a);
-			un = a->deb;
-		}
-	}
+	if (getrr(len, un) > getrrr(len, un, a))
+		pushmoiti(len, a, b, un);
+	else
+		pushmoit(len, a, b, un);
 	sortplusplus(a, b);
 }

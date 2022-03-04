@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:17:27 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/03 12:23:52 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/04 08:50:53 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ typedef struct s_mouv
 	int	rb;
 }	t_mouv;
 
+typedef struct s_point
+{
+	t_tab	*un;
+	t_tab	*deux;
+}	t_point;
+
 long int	ft_atol(const char *tab);
 void		swap(t_extrem *s);
 void		printall(t_extrem a, t_extrem b);
@@ -60,7 +66,7 @@ void		setmouv(t_extrem *a, t_extrem *b, t_mouv best);
 void		zerodeb(t_extrem *a);
 int			lslen(t_extrem ex);
 t_mouv		optibest(t_mouv best, t_extrem a, t_extrem b);
-t_mouv		savebest(int ra, int rb);
+t_mouv		savebest(int ra, int rb, t_mouv best);
 void		freeall(t_extrem tab);
 void		mainsuite(int argc, t_tab *tab, t_extrem a, char **arg);
 int			ft_isfulldigit(char *str);
@@ -70,6 +76,11 @@ void		indexeur(t_extrem *ex);
 void		mainsuite2(t_extrem a, int argc, int i);
 void		sortplus2(t_extrem *a, t_extrem *b, int len);
 void		sortplusplus(t_extrem *a, t_extrem *b);
-t_mouv		unprev(t_mouv best, t_tab un, t_tab deux, t_extrem *a);
+t_mouv		unprev(t_extrem *a, t_mouv	temp, t_mouv best, t_point j);
+t_mouv		getmou(t_extrem *a, t_mouv	temp, t_mouv best, t_point j);
+int			getrr(int len, t_tab *un);
+int			getrrr(int len, t_tab *un, t_extrem *a);
+void		pushmoit(int len, t_extrem *a, t_extrem *b, t_tab *un);
+void		pushmoiti(int len, t_extrem *a, t_extrem *b, t_tab *un);
 
 #endif

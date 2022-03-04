@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:17:00 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/03 12:50:34 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/04 08:47:01 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,65 +15,44 @@
 t_mouv	getmouv(t_extrem *a, t_extrem *b)
 {
 	t_mouv	best;
-	t_tab	*un;
-	t_tab	*deux;
-	int		ra;
-	int		rb;
+	t_point	j;
+	t_mouv	temp;
 
-	ra = 0;
+	temp.ra = 0;
 	best.ra = 1000000;
 	best.rb = 1000000;
-	un = a->deb;
-	while (un && ra < best.ra + best.rb)
+	j.un = a->deb;
+	while (j.un && temp.ra < best.ra + best.rb)
 	{
-		deux = b->deb;
-		rb = 0;
-		while (deux && rb < best.ra + best.rb && ra < best.ra + best.rb)
-		{
-			if (un->prev)
-			{
-				if (checktrie(a) && deux->index < un->index)
-				{
-					if (ra + rb < best.ra + best.rb)
-						best = savebest(ra, rb);
-				}
-				else if (deux->index < un->index
-					&& deux->index > un->prev->index)
-				{
-					if (ra + rb < best.ra + best.rb)
-						best = savebest(ra, rb);
-				}
-				else if (un->index == getmin(*a) && un->index > deux->index)
-				{
-					if (ra + rb < best.ra + best.rb)
-						best = savebest(ra, rb);
-				}
-			}
-			else if ((checktrie(a) && deux->index < un->index)
-				|| ((deux->index < un->index && deux->index > a->end->index)))
-			{
-				if (ra + rb < best.ra + best.rb)
-					best = savebest(ra, rb);
-			}
-			if (deux->index == un->index - 1 && checktrie(a))
-			{
-				if (ra + rb < best.ra + best.rb)
-					best = savebest(ra, rb);
-			}
-			else if (un->index == getmax(*a) && un->index + 1 == deux->index)
-			{
-				ra++;
-				if (ra + rb < best.ra + best.rb)
-					best = savebest(ra, rb);
-				ra--;
-			}
-			deux = deux->next;
-			rb++;
-		}
-		un = un->next;
-		ra++;
+		j.deux = b->deb;
+		temp.rb = 0;
+		best = getmou(a, temp, best, j);
+		j.un = j.un->next;
+		temp.ra++;
 	}
 	return (best);
+}
+
+void	setmouv2(t_extrem *a, t_extrem *b, t_mouv best)
+{
+	while (best.ra > 0)
+	{
+		best.ra--;
+		rotate(a);
+		ft_printf("ra\n");
+	}
+	while (best.rb < 0)
+	{
+		best.rb++;
+		revrot(b);
+		ft_printf("rrb\n");
+	}
+	while (best.ra < 0)
+	{
+		best.ra++;
+		revrot(a);
+		ft_printf("rra\n");
+	}
 }
 
 void	setmouv(t_extrem *a, t_extrem *b, t_mouv best)
@@ -98,24 +77,7 @@ void	setmouv(t_extrem *a, t_extrem *b, t_mouv best)
 		rotate(b);
 		ft_printf("rb\n");
 	}
-	while (best.ra > 0)
-	{
-		best.ra--;
-		rotate(a);
-		ft_printf("ra\n");
-	}
-	while (best.rb < 0)
-	{
-		best.rb++;
-		revrot(b);
-		ft_printf("rrb\n");
-	}
-	while (best.ra < 0)
-	{
-		best.ra++;
-		revrot(a);
-		ft_printf("rra\n");
-	}
+	setmouv2(a, b, best);
 	push(b, a);
 	ft_printf("pa\n");
 }
@@ -145,6 +107,29 @@ void	zerodeb(t_extrem *a)
 		{
 			rotate(a);
 			ft_printf("ra\n");
+		}
+	}
+}
+
+void	pushmoit(int len, t_extrem *a, t_extrem *b, t_tab *un)
+{
+	int	i;
+
+	i = 0;
+	while (i < (len / 2) && len >= 6)
+	{
+		if (un->index < (len / 2))
+		{
+			ft_printf("pb\n");
+			push(a, b);
+			un = a->deb;
+			i++;
+		}
+		else
+		{
+			ft_printf("rra\n");
+			revrot(a);
+			un = a->deb;
 		}
 	}
 }
