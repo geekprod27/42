@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
+/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:36 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/04 09:21:39 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:18:20 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ void	sortmoin(t_extrem *a)
 	}
 }
 
-int	lslen(t_extrem ex)
+int	lslen(t_extrem *ex)
 {
 	int		i;
 	t_tab	*un;
 
 	i = 0;
-	if (!ex.deb)
+	if (!ex->deb)
 		return (0);
-	un = ex.deb;
+	un = ex->deb;
 	while (un)
 	{
 		i++;
@@ -81,6 +81,7 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 	while (b->deb)
 	{
 		a->deb->prev = NULL;
+		b->deb->prev = NULL;
 		if (checktrie(a) && a->end->index < b->deb->index)
 		{
 			push(b, a);
@@ -97,7 +98,7 @@ void	sortplus(t_extrem *a, t_extrem *b, int len)
 			ft_printf("pa\n");
 		}
 		else
-			setmouv(a, b, optibest(getmouv(a, b), *a, *b));
+			setmouv(a, b, optibest(getmouv(a, b), a, b));
 	}
 	zerodeb(a);
 }

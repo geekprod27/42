@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
+/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:16:42 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/04 07:32:56 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:10:05 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	getmax(t_extrem a)
 	return (max);
 }
 
-t_mouv	optibest(t_mouv best, t_extrem a, t_extrem b)
+t_mouv	optibest(t_mouv best, t_extrem *a, t_extrem *b)
 {
 	if (best.ra < 0)
 		best.ra = 0;
@@ -69,12 +69,12 @@ t_mouv	savebest(int ra, int rb, t_mouv best)
 	return (best);
 }
 
-void	freeall(t_extrem tab)
+void	freeall(t_extrem *tab)
 {
 	t_tab	*un;
 	t_tab	*deux;
 
-	un = tab.deb;
+	un = tab->deb;
 	deux = un->next;
 	while (un)
 	{

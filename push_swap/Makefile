@@ -30,9 +30,4 @@ fclean: clean
 	@make fclean -C printf/
 	@make fclean -C libft/
 
-com: fclean
-	git add *
-	git commit -m "commit makefile"
-	git push
-
 re: fclean all

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
+/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:17:27 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/04 09:08:41 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:12:14 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,23 +57,23 @@ void		rrr(t_extrem *a, t_extrem *b);
 void		rr(t_extrem *a, t_extrem *b);
 void		sortmoin(t_extrem *a);
 void		sortplus(t_extrem *a, t_extrem *b, int len);
-void		err(t_extrem tab);
+void		err(t_extrem *tab);
 int			checktrie(t_extrem *a);
 int			getmin(t_extrem a);
 int			getmax(t_extrem a);
 t_mouv		getmouv(t_extrem *a, t_extrem *b);
 void		setmouv(t_extrem *a, t_extrem *b, t_mouv best);
 void		zerodeb(t_extrem *a);
-int			lslen(t_extrem ex);
-t_mouv		optibest(t_mouv best, t_extrem a, t_extrem b);
+int			lslen(t_extrem *ex);
+t_mouv		optibest(t_mouv best, t_extrem *a, t_extrem *b);
 t_mouv		savebest(int ra, int rb, t_mouv best);
-void		freeall(t_extrem tab);
-void		mainsuite(int argc, t_tab *tab, t_extrem a, char **arg);
+void		freeall(t_extrem *tab);
+void		mainsuite(int argc, t_tab *tab, t_extrem *a, char **arg);
 int			ft_isfulldigit(char *str);
 int			isint(char *str);
 void		checkerr(t_extrem ex);
 void		indexeur(t_extrem *ex);
-void		mainsuite2(t_extrem a, int argc);
+void		mainsuite2(t_extrem *a, int argc);
 void		sortplus2(t_extrem *a, t_extrem *b, int len);
 void		sortplusplus(t_extrem *a, t_extrem *b);
 t_mouv		unprev(t_extrem *a, t_mouv	temp, t_mouv best, t_point j);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   atol.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
+/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:08 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/04 08:50:24 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:18:06 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ long int	ft_atol(const char *tab)
 {
 	int			i;
 	long int	neg;
-	t_extrem	a;
+	t_extrem	*a;
 
 	i = 0;
 	neg = 1;
+	a = NULL;
 	i = skipspaces((char *)tab);
 	if (tab[i] == '-' || tab[i] == '+')
 	{

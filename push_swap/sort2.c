@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
+/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:17:00 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/04 08:47:01 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:05:27 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	zerodeb(t_extrem *a)
 		un = un->next;
 		i++;
 	}
-	if (i > lslen(*a) / 2)
+	if (i > lslen(a) / 2)
 	{
 		while (a->deb->index != 0)
 		{

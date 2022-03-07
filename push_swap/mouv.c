@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouv.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
+/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:13:35 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/02/28 12:20:03 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:33:04 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	push(t_extrem *a, t_extrem *b)
 	un = a->deb;
 	if (!b->deb)
 	{
-		deux = malloc(sizeof(t_tab));
+		deux = ft_calloc(sizeof(t_tab), 1);
 		b->deb = deux;
 		b->end = deux;
 		deux->value = un->value;
@@ -84,5 +84,6 @@ void	revrot(t_extrem *ex)
 	ex->deb->prev = ex->end;
 	ex->end->prev = NULL;
 	ex->end = g;
+	ex->end->next = NULL;
 	ex->deb = temp;
 }

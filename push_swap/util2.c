@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
+/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 08:26:03 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/04 11:54:03 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:02:42 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sortplusplus(t_extrem *a, t_extrem *b)
 {
-	while (lslen(*a) > 3)
+	while (lslen(a) > 3)
 	{
 		ft_printf("pb\n");
 		push(a, b);
@@ -37,7 +37,7 @@ t_mouv	unprev(t_extrem *a, t_mouv	temp, t_mouv best, t_point j)
 t_mouv	getmou(t_extrem *a, t_mouv	temp, t_mouv best, t_point j)
 {
 	while (j.deux && temp.rb < best.ra + best.rb
-		&& temp.ra < best.ra + best.rb)
+		&& temp.ra < best.ra + best.rb && j.un)
 	{
 		if (j.un->prev)
 			best = unprev(a, temp, best, j);
