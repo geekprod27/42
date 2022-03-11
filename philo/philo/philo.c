@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 05:48:25 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/10 10:12:25 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/11 07:46:25 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,36 +29,43 @@ void	*thread(void *arg)
 	int			lasteat;
 	int			flag;
 	int			flag2;
+	int			nbrep;
 
 	phil = *(t_philo *) arg;
 	lasteat = gettime();
 	flag2 = 0;
+	nbrep = 0;
 	while (phil.data->ismort)
 	{
 		pthread_mutex_lock(&phil.data->speak);
+		flag = 1;
 		if (gettime() - lasteat > phil.data->tdie && phil.data->ismort)
 		{
 			phil.data->ismort = 0;
 			printf("%d %d died\n", gettime(), phil.nb);
 			pthread_mutex_unlock(&phil.data->speak);
-			if (flag2)
-				clearfour(phil, flag2);
+			flag = 0;
+			clearfour(phil, flag2);
 			break ;
 		}
 		if (!phil.data->ismort)
 			break ;
-		pthread_mutex_unlock(&phil.data->speak);
+		if (flag)
+			pthread_mutex_unlock(&phil.data->speak);
 		if (getfour(phil, &flag2, lasteat))
 		{
 			if (phil.data->ismort)
 			{
+				lasteat = gettime();
 				pthread_mutex_lock(&phil.data->speak);
 				printf("%d %d eating\n", gettime(), phil.nb);
 				pthread_mutex_unlock(&phil.data->speak);
-				lasteat = gettime();
+				nbrep++;
 				usleep(phil.data->teat * 1000);
 				clearfour(phil, 2);
 				flag2 = 0;
+				if (phil.data->nbrep != 0 && phil.data->nbrep == nbrep)
+					break ;
 			}
 		}
 		else
@@ -88,7 +95,6 @@ void	*thread(void *arg)
 		if (!phil.data->ismort)
 			break ;
 	}
-	pthread_mutex_unlock(&phil.data->speak);
 	pthread_exit(arg);
 }
 
@@ -129,9 +135,9 @@ pthread_mutex_t	*init(t_data *data, int argc, char **argv)
 		else
 			phil.rfour = &four[i + 1];
 		phil.lfour = &four[i];
-		usleep(55);
+		usleep(40);
 		pthread_create(&data->th[i], NULL, thread, &phil);
-		usleep(50);
+		usleep(40);
 		i++;
 	}
 	return (four);
@@ -144,15 +150,15 @@ int	main(int argc, char **argv)
 	pthread_mutex_t	*four;
 
 	gettime();
-	i = 0;
+	i = 1;
 	if (argc < 5 || argc > 6)
 		return (printf("\033[91m/!\\ERREUR/!\\ : argument invalide !\n\033[0m"));
 	four = init(&data, argc, argv);
 	if (!four)
 		return (printf("\033[91m/!\\ERREUR/!\\ : argument invalide !\n\033[0m"));
-	while (i + 1 <= data.nbphilo)
+	while (i <= data.nbphilo)
 	{
-		pthread_join(data.th[i + 1], NULL);
+		pthread_join(data.th[i], NULL);
 		i++;
 	}
 	free(data.th);
