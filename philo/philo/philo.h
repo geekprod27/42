@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfelsemb <nfelsemb@student.42.frn>         +#+  +:+       +#+        */
+/*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 05:59:19 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/10 10:07:24 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:54:04 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,19 @@ typedef struct s_philo
 	t_data			*data;
 }	t_philo;
 
-int		ft_atoi(const char *tab);
-int		gettime(void);
-int		getfour(t_philo phil, int *flag, int lasteat);
-void	clearfour(t_philo phil, int flag);
+typedef struct s_retfree
+{
+	int				flag;
+	t_philo			*phil;
+	pthread_mutex_t	*four;
+}	t_retfree;
+
+int			ft_atoi(const char *tab);
+int			gettime(void);
+int			getfour(t_philo *phil, int *flag, int lasteat);
+void		clearfour(t_philo *phil, int flag);
+int			philsleep(t_philo	*phil, int lasteat);
+int			phileat(t_philo	*phil, int lasteat);
+t_retfree	init(t_data *data, int argc, char **argv);
 
 #endif
