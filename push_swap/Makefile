@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wextra -Wall -Werror -g
+CFLAGS = -Wextra -Wall -Werror -g -fsanitize=address
 
 SRC = push_swap.c atol.c mouv.c mouv2.c sort.c util.c sort2.c util2.c
 
@@ -18,7 +18,7 @@ ${LIBFT}:
 	@make -C libft/
 
 ${NAME}: ${LIBPRINTF} ${LIBFT} ${OBJ}
-	gcc -o ${NAME} ${OBJ} ${LIBPRINTF} ${LIBFT}
+	gcc -o ${NAME} ${OBJ} ${LIBPRINTF} ${LIBFT} -fsanitize=address
 
 clean:
 	rm -f ${OBJ}
