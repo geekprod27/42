@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wextra -Wall -Werror -fsanitize=thread
+CFLAGS = -Wextra -Wall -Werror
 
 SRC = philo.c util.c four.c main.c
 
@@ -10,7 +10,7 @@ NAME = philo
 all:	${NAME}
 
 ${NAME}: ${LIBPRINTF} ${LIBFT} ${OBJ}
-	gcc -o ${NAME} ${OBJ} ${LIBPRINTF} ${LIBFT} -lpthread -D_REENTRANT -fsanitize=thread
+	gcc -o ${NAME} ${OBJ} ${LIBPRINTF} ${LIBFT} -lpthread -D_REENTRANT
 
 clean:
 	rm -f ${OBJ}

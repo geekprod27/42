@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 05:59:19 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/15 16:54:04 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/16 16:47:56 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_philo
 	int				nb;
 	pthread_mutex_t	*lfour;
 	pthread_mutex_t	*rfour;
+	int				lasteat;
 	t_data			*data;
 }	t_philo;
 
@@ -49,9 +50,12 @@ typedef struct s_retfree
 int			ft_atoi(const char *tab);
 int			gettime(void);
 int			getfour(t_philo *phil, int *flag, int lasteat);
-void		clearfour(t_philo *phil, int flag);
+void		clearfour(t_philo *phil, int *flag);
 int			philsleep(t_philo	*phil, int lasteat);
 int			phileat(t_philo	*phil, int lasteat);
 t_retfree	init(t_data *data, int argc, char **argv);
+int			checkdead(t_philo *phil, int *flag2);
+int			threadsui(t_philo *phil, int *flag2);
+t_philo		*initphil(void *arg, int *flag2, int *nbrep);
 
 #endif
