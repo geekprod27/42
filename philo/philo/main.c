@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:52:51 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/16 16:52:21 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/17 16:35:23 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,12 @@ int	main(int argc, char **argv)
 	t_retfree		ret;
 
 	gettime();
-	i = 1;
+	i = 0;
 	if (argc < 5 || argc > 6)
 		return (printf("\033[91m/!\\ERREUR/!\\ : argument invalide !\n\033[0m"));
 	ret = init(&data, argc, argv);
 	if (ret.flag)
 	{
-		free(data.th);
-		free(ret.four);
-		free(ret.phil);
 		return (printf("\033[91m/!\\ERREUR/!\\ : argument invalide !\n\033[0m"));
 	}
 	while (i < data.nbphilo)
@@ -35,9 +32,6 @@ int	main(int argc, char **argv)
 		pthread_join(data.th[i], NULL);
 		i++;
 	}
-	free(data.th);
-	free(ret.four);
-	free(ret.phil);
 	return (0);
 }
 
@@ -48,37 +42,46 @@ int	checkdead(t_philo *phil, int *flag2)
 		phil->data->ismort = 0;
 		printf("%d %d died\n", gettime(), phil->nb);
 		clearfour(phil, flag2);
+		pthread_mutex_unlock(&phil->data->dat);
 		return (1);
 	}
+	pthread_mutex_unlock(&phil->data->dat);
 	return (0);
 }
 
 int	threadsui(t_philo *phil, int *flag2)
 {
 	clearfour(phil, flag2);
+	pthread_mutex_lock(&phil->data->dat);
 	if (phil->data->ismort == 0
 		|| gettime() - phil->lasteat > phil->data->tdie)
+	{
+		pthread_mutex_unlock(&phil->data->dat);
 		return (1);
+	}
+	pthread_mutex_unlock(&phil->data->dat);
 	if (philsleep(phil, phil->lasteat))
 		return (1);
-	if (phil->data->ismort && gettime() - phil->lasteat < phil->data->tdie)
-		printf("%d %d is thinking\n", gettime(), phil->nb);
+	pthread_mutex_lock(&phil->data->dat);
 	if (!phil->data->ismort)
+	{
+		pthread_mutex_unlock(&phil->data->dat);
 		return (2);
+	}
+	pthread_mutex_unlock(&phil->data->dat);
+	if (gettime() - phil->lasteat < phil->data->tdie)
+		printf("%d %d is thinking\n", gettime(), phil->nb);
 	return (0);
 }
 
-t_philo	*initphil(void *arg, int *flag2, int *nbrep)
+t_philo	*initphil(void *arg)
 {
 	t_philo	*phil;
 
 	phil = (t_philo *) arg;
 	phil->lasteat = gettime();
-	flag2 = 0;
-	nbrep = 0;
-	flag2 = flag2;
-	nbrep = nbrep;
+	phil->nbrep = 0;
 	if (phil->nb % 2)
-		usleep(phil->data->teat * 999);
+		usleep(phil->data->teat * 1000);
 	return (phil);
 }

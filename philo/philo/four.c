@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 08:23:02 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/16 16:38:47 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/17 17:36:36 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,65 @@
 
 int	getfour(t_philo *phil, int *flag, int lasteat)
 {
-	pthread_mutex_lock(phil->rfour);
-	*flag = 1;
-	if (!phil->data->ismort || gettime() - lasteat > phil->data->tdie)
-		return (0);
-	if (!phil->data->ismort || gettime() - lasteat > phil->data->tdie)
+	int	ret;
+
+	while (1)
 	{
-		return (0);
+		ret = get1four(phil, flag, lasteat);
+		if (ret == 1)
+			break ;
+		else if (ret == 0)
+			return (0);
 	}
-	printf("%d %d has taken a fork\n", gettime(), phil->nb);
-	if (!phil->data->ismort || gettime() - lasteat > phil->data->tdie)
-		return (0);
-	pthread_mutex_lock(phil->lfour);
-	*flag = 2;
-	if (!phil->data->ismort)
+	while (1)
 	{
-		return (0);
+		ret = get2four(phil, flag, lasteat);
+		if (ret == 1)
+			break ;
+		else if (ret == 0)
+			return (0);
 	}
-	printf("%d %d has taken a fork\n", gettime(), phil->nb);
 	return (1);
 }
 
 void	clearfour(t_philo *phil, int *flag)
 {
 	if (*flag >= 1)
-		pthread_mutex_unlock(phil->rfour);
+	{
+		pthread_mutex_lock(&phil->rfour->mfour);
+		phil->rfour->four = 0;
+		pthread_mutex_unlock(&phil->rfour->mfour);
+	}
 	if (*flag == 2)
-		pthread_mutex_unlock(phil->lfour);
-	flag = 0;
+	{
+		pthread_mutex_lock(&phil->lfour->mfour);
+		phil->lfour->four = 0;
+		pthread_mutex_unlock(&phil->lfour->mfour);
+	}
+	*flag = 0;
 }
 
 int	philsleep(t_philo	*phil, int lasteat)
 {
+	int (flag) = 0;
+	pthread_mutex_lock(&phil->data->dat);
 	if (phil->data->ismort)
 		printf("%d %d sleep\n", gettime(), phil->nb);
+	pthread_mutex_unlock(&phil->data->dat);
 	if (gettime() + phil->data->tsleep > lasteat + phil->data->tdie)
 	{
-		while (gettime() < lasteat + phil->data->tdie && phil->data->ismort)
+		while (gettime() < lasteat + phil->data->tdie)
+		{
 			usleep(1000);
+			pthread_mutex_lock(&phil->data->dat);
+			flag = 1;
+			if (!phil->data->ismort)
+				break ;
+			pthread_mutex_unlock(&phil->data->dat);
+			flag = 0;
+		}
+		if (flag)
+			pthread_mutex_unlock(&phil->data->dat);
 		return (1);
 	}
 	else
@@ -61,14 +82,20 @@ int	philsleep(t_philo	*phil, int lasteat)
 
 int	phileat(t_philo	*phil, int lasteat)
 {
-	int	i;
-
+	int i, (flag) = 0;
+	pthread_mutex_lock(&phil->data->dat);
 	if (phil->data->ismort)
 		printf("%d %d eating\n", gettime(), phil->nb);
+	pthread_mutex_unlock(&phil->data->dat);
 	if (gettime() + phil->data->teat > lasteat + phil->data->tdie)
 	{
-		while (gettime() < lasteat + phil->data->tdie && phil->data->ismort)
-			usleep(1000);
+		while (gettime() < lasteat + phil->data->tdie)
+		{
+			if (eatdead(&flag, phil))
+				break ;
+		}
+		if (flag)
+			pthread_mutex_unlock(&phil->data->dat);
 		return (1);
 	}
 	else
@@ -76,4 +103,20 @@ int	phileat(t_philo	*phil, int lasteat)
 	i = 2;
 	clearfour(phil, &i);
 	return (0);
+}
+
+t_retfree	*initfour(t_retfree *ret, int i, t_data *data)
+{
+	ret->phil[i].nb = i + 1;
+	if (i == data->nbphilo)
+		ret->phil[i].rfour = &ret->four[0];
+	else if (data->nbphilo != 1)
+		ret->phil[i].rfour = &ret->four[i];
+	else
+		ret->phil[i].rfour = &ret->four[i];
+	if (i != 0)
+		ret->phil[i].lfour = &ret->four[i - 1];
+	else
+		ret->phil[i].lfour = &ret->four[data->nbphilo - 1];
+	return (ret);
 }

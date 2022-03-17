@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 05:59:19 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/16 16:47:56 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/17 17:35:29 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,21 @@ typedef struct s_data
 	int				nbrep;
 	int				ismort;
 	pthread_t		*th;
-	pthread_mutex_t	speak;
+	pthread_mutex_t	dat;
 }	t_data;
+
+typedef struct s_four
+{
+	int				four;
+	pthread_mutex_t	mfour;
+}	t_four;
 
 typedef struct s_philo
 {
 	int				nb;
-	pthread_mutex_t	*lfour;
-	pthread_mutex_t	*rfour;
+	int				nbrep;
+	t_four			*lfour;
+	t_four			*rfour;
 	int				lasteat;
 	t_data			*data;
 }	t_philo;
@@ -44,7 +51,7 @@ typedef struct s_retfree
 {
 	int				flag;
 	t_philo			*phil;
-	pthread_mutex_t	*four;
+	t_four			*four;
 }	t_retfree;
 
 int			ft_atoi(const char *tab);
@@ -56,6 +63,11 @@ int			phileat(t_philo	*phil, int lasteat);
 t_retfree	init(t_data *data, int argc, char **argv);
 int			checkdead(t_philo *phil, int *flag2);
 int			threadsui(t_philo *phil, int *flag2);
-t_philo		*initphil(void *arg, int *flag2, int *nbrep);
+t_philo		*initphil(void *arg);
+t_retfree	*initfour(t_retfree *ret, int i, t_data *data);
+void		four(int *flag, t_philo *phil);
+int			eatdead(int *flag, t_philo *phil);
+int			get1four(t_philo *phil, int *flag, int lasteat);
+int			get2four(t_philo *phil, int *flag, int lasteat);
 
 #endif
