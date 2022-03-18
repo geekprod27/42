@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:52:51 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/17 16:35:23 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:11:30 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	checkdead(t_philo *phil, int *flag2)
 {
 	if (gettime() - phil->lasteat > phil->data->tdie && phil->data->ismort)
 	{
+		pthread_mutex_unlock(&phil->data->dat);
+		pthread_mutex_lock(&phil->data->dat);
 		phil->data->ismort = 0;
 		printf("%d %d died\n", gettime(), phil->nb);
 		clearfour(phil, flag2);
