@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 05:48:25 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/17 16:42:57 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/21 16:41:08 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,19 +89,21 @@ t_retfree	init(t_data *data, int argc, char **argv)
 {
 	t_retfree		ret;
 
-	int (i) = -1;
-	ret.phil = NULL;
-	ret.four = NULL;
+	int (i) = 0;
 	data->nbphilo = ft_atoi(argv[1]);
+	inidata(data, argv);
 	ret.four = malloc(sizeof(t_four) * (data->nbphilo));
-	data->tdie = ft_atoi(argv[2]);
-	data->teat = ft_atoi(argv[3]);
-	data->tsleep = ft_atoi(argv[4]);
-	data->th = malloc(sizeof(pthread_t) * ft_atoi(argv[1]));
-	data->ismort = 1;
 	ret.phil = malloc(sizeof(t_philo) * data->nbphilo);
-	while (i++ < data->nbphilo)
+	if (!ret.phil || !ret.four)
+	{
+		ret.flag = 1;
+		return (ret);
+	}
+	while (i < data->nbphilo)
+	{
 		ret.phil[i].data = data;
+		i++;
+	}
 	i = 0;
 	pthread_mutex_init(&data->dat, NULL);
 	if (argc == 6)

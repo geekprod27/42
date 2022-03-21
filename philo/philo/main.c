@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:52:51 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/18 14:11:30 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/21 16:52:18 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,19 @@ int	main(int argc, char **argv)
 	ret = init(&data, argc, argv);
 	if (ret.flag)
 	{
-		return (printf("\033[91m/!\\ERREUR/!\\ : argument invalide !\n\033[0m"));
+		free(data.th);
+		free(ret.phil);
+		free(ret.four);
+		return (printf("\033[91m/!\\ERREUR/!\\ : argument/malloc !\n\033[0m"));
 	}
 	while (i < data.nbphilo)
 	{
 		pthread_join(data.th[i], NULL);
 		i++;
 	}
+	free(data.th);
+	free(ret.phil);
+	free(ret.four);
 	return (0);
 }
 
@@ -86,4 +92,13 @@ t_philo	*initphil(void *arg)
 	if (phil->nb % 2)
 		usleep(phil->data->teat * 1000);
 	return (phil);
+}
+
+void	inidata(t_data *data, char **argv)
+{
+	data->tdie = ft_atoi(argv[2]);
+	data->teat = ft_atoi(argv[3]);
+	data->tsleep = ft_atoi(argv[4]);
+	data->th = malloc(sizeof(pthread_t) * ft_atoi(argv[1]));
+	data->ismort = 1;
 }

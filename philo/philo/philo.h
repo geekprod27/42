@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 05:59:19 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/17 17:35:29 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/21 16:41:29 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void		four(int *flag, t_philo *phil);
 int			eatdead(int *flag, t_philo *phil);
 int			get1four(t_philo *phil, int *flag, int lasteat);
 int			get2four(t_philo *phil, int *flag, int lasteat);
+void		inidata(t_data *data, char **argv);
 
 #endif
