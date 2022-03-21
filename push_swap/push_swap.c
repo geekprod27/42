@@ -6,7 +6,7 @@
 /*   By: nfelsemb <nfelsemb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 14:10:14 by nfelsemb          #+#    #+#             */
-/*   Updated: 2022/03/07 17:20:47 by nfelsemb         ###   ########.fr       */
+/*   Updated: 2022/03/21 15:41:20 by nfelsemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	err(t_extrem *tab)
 {
 	ft_printf("Error\n");
-	freeall(tab);
+	if (tab)
+		freeall(tab);
 	exit(1);
 }
 
